@@ -14,6 +14,8 @@ import java.util.prefs.Preferences;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.openide.util.NbPreferences;
+import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
+import ru.sbobrov85.nb.twiglinter.classes.TwigLinter;
 
 final class TwigLinterPanel extends javax.swing.JPanel {
 
@@ -25,11 +27,6 @@ final class TwigLinterPanel extends javax.swing.JPanel {
     private Preferences prefs;
 
     /**
-     * Contain key for executable path option.
-     */
-    private static final String OPTION_EXECUTABLE_PATH = "EXECUTABLE_PATH";
-
-    /**
      * Class constructor.
      *
      * @param controller current controller instance.
@@ -39,7 +36,7 @@ final class TwigLinterPanel extends javax.swing.JPanel {
         initComponents();
         // TODO listen to changes in form fields and call controller.changed()
 
-        prefs = NbPreferences.forModule(getClass());
+        prefs = NbPreferences.forModule(TwigLinter.class);
 
         prefs.addPreferenceChangeListener(new PreferenceChangeListener() {
             @Override
@@ -125,14 +122,14 @@ final class TwigLinterPanel extends javax.swing.JPanel {
      * Read settings and initialize GUI.
      */
     void load() {
-        filePath.setText(prefs.get(OPTION_EXECUTABLE_PATH, ""));
+        filePath.setText(prefs.get(CommonHelper.OPTION_EXECUTABLE_PATH, ""));
     }
 
     /**
      * Store modified settings.
      */
     void store() {
-        prefs.put(OPTION_EXECUTABLE_PATH, filePath.getText());
+        prefs.put(CommonHelper.OPTION_EXECUTABLE_PATH, filePath.getText());
     }
 
     /**

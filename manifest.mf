@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module: ru.sbobrov85.nb.twiglinter
+OpenIDE-Module-Layer: ru/sbobrov85/nb/twiglinter/layer.xml
 OpenIDE-Module-Localizing-Bundle: ru/sbobrov85/nb/twiglinter/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Specification-Version: 1.3
 

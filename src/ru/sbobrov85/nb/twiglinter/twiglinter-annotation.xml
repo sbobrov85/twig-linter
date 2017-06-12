@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE type PUBLIC "-//NetBeans//DTD annotation type 1.0//EN" "http://www.netbeans.org/dtds/annotation-type-1_0.dtd">
+<type
+    name="twiglinter-annotation"
+    description_key="Annotation.ErrorDescription"
+    localizing_bundle="ru.sbobrov85.nb.twiglinter.Bundle"
+    visible="true"
+    glyph="nbresloc:/org/netbeans/modules/editor/hints/resources/error-glyph.gif"
+    type="linepart"
+    use_custom_sidebar_color="true"
+    custom_sidebar_color="0xFFBE00"
+    severity="error"
+/>
