@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.sbobrov85.nb.twiglinter;
+package ru.sbobrov85.nb.twiglinter.panel;
 
 import java.io.File;
 import java.util.logging.Level;
