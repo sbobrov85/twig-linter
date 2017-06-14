@@ -22,7 +22,7 @@ But as beta it's working fine :)
 
 ## Build from source
 
-1. Clone this repo: git clone https://github.com/sbobrov85/uploadfilesbutton.git ~/uploadfilesbutton
+1. Clone this repo: git clone git@github.com:sbobrov85/twig-linter.git ~/twig-linter
 2. Open NetBeans, select File -> Open project... and select cloned folder.
 3. Right mouse click by project, select "Create NBM" and wait.
 4. Install to NetBeans, use [standard instruction](http://wiki.netbeans.org/InstallingAPlugin) with select nbm from "build" subfolder.
