@@ -46,7 +46,7 @@ public class TwigError {
      * @param csvLine comma-separated string (file,line,message).
      */
     public TwigError(final String csvLine) {
-        List<String> parts = Arrays.asList(csvLine.split("\\s*,\\s*"));
+        List<String> parts = Arrays.asList(csvLine.split("\\s*,\\b"));
         if (parts.size() == 3) {
             file = parts.get(0);
             line = Integer.parseInt(parts.get(1));
