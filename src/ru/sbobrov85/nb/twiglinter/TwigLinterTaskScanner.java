@@ -36,7 +36,7 @@ public class TwigLinterTaskScanner extends FileTaskScanner {
     /**
      * Contains group name constant.
      */
-    private static final String GROUP_NAME = "twiglinter-tasklist";
+    private static final String GROUP_NAME = "nb-tasklist-error";
 
     /**
      * Contains callback instance link.
