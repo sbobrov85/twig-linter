@@ -22,15 +22,10 @@ import java.util.LinkedList;
 import java.util.List;
 import org.netbeans.spi.tasklist.FileTaskScanner;
 import org.netbeans.spi.tasklist.Task;
-import org.openide.cookies.LineCookie;
 import org.openide.filesystems.FileObject;
-import org.openide.loaders.DataObject;
-import org.openide.loaders.DataObjectNotFoundException;
-import org.openide.util.Exceptions;
 import ru.sbobrov85.nb.twiglinter.classes.TwigLinter;
 import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
 import ru.sbobrov85.nb.twiglinter.classes.TwigError;
-import ru.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
 
 /**
  * Main class for file scan control.
@@ -85,32 +80,11 @@ public class TwigLinterTaskScanner extends FileTaskScanner {
             return Collections.<Task>emptyList();
         }
 
-        DataObject dataObject = null;
-        LineCookie lineCookie = null;
-
-        try {
-            dataObject = DataObject.find(fo);
-            lineCookie = dataObject.getLookup().lookup(LineCookie.class);
-        } catch (DataObjectNotFoundException ex) {
-            Exceptions.printStackTrace(ex);
-        }
-
-        if (dataObject != null) {
-            TwigLinterErrorAnnotation.clear(dataObject);
-        }
-
         final LinkedList<Task> tasks = new LinkedList<>();
 
         LinkedList<TwigError> errors = TwigLinter.lint(fo);
 
         for (TwigError error : errors) {
-            if (dataObject != null && lineCookie != null) {
-                TwigLinterErrorAnnotation.createAnnotation(
-                    dataObject,
-                    lineCookie,
-                    error
-                );
-            }
             tasks.add(Task.create(
                 fo,
                 GROUP_NAME,

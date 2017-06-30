@@ -21,13 +21,17 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import org.openide.cookies.LineCookie;
+import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
+import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.text.Annotatable;
 import org.openide.text.Annotation;
 import org.openide.text.Line;
+import org.openide.util.Exceptions;
 
 /**
  * Class for twig error annotations managing.
@@ -128,7 +132,7 @@ public final class TwigLinterErrorAnnotation extends Annotation {
      * @param lineCookie line cookie.
      * @param error twig error object.
      */
-    public static void createAnnotation(
+    protected static void createAnnotation(
         final DataObject dataObject,
         final LineCookie lineCookie,
         final TwigError error
@@ -158,5 +162,39 @@ public final class TwigLinterErrorAnnotation extends Annotation {
                 }
             }
         });
+    }
+
+    //--------------------------------------------------------------------------
+
+    /**
+     * Scan file and create error annotations.
+     * @param fileObject file for scan.
+     */
+    public static void createAnnotations(final FileObject fileObject) {
+        DataObject dataObject = null;
+        LineCookie lineCookie = null;
+
+        try {
+            dataObject = DataObject.find(fileObject);
+            lineCookie = dataObject.getLookup().lookup(LineCookie.class);
+        } catch (DataObjectNotFoundException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+
+        if (dataObject != null) {
+            clear(dataObject);
+        }
+
+        LinkedList<TwigError> errors = TwigLinter.lint(fileObject);
+
+        for (TwigError error : errors) {
+            if (dataObject != null && lineCookie != null) {
+                createAnnotation(
+                    dataObject,
+                    lineCookie,
+                    error
+                );
+            }
+        }
     }
 }
