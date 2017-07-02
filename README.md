@@ -6,8 +6,6 @@ Integrate php twig-linter with NetBeans IDE
 
 ## Introduction
 
-It's still active development!
-
 Known problems:
   * PHP executable hardcoded.
 
