@@ -42,21 +42,28 @@ public final class TwigLinterErrorAnnotation extends Annotation {
      * Contains annotations list.
      */
     private static final
-        Map<DataObject, List<Annotation>> annotations = new HashMap<>();;
+        Map<DataObject, List<TwigLinterErrorAnnotation>> annotations = new HashMap<>();
 
     /**
      * Contains annotation message.
      */
     private static String message;
 
+    /**
+     * Constains annotation line number.
+     */
+    private static int lineNumber;
+
     //--------------------------------------------------------------------------
 
     /**
      * Constructor.
      * @param msg message for annotation.
+     * @param currentLine annotation line number.
      */
-    private TwigLinterErrorAnnotation(final String msg) {
+    private TwigLinterErrorAnnotation(final String msg, final int currentLine) {
         message = msg;
+        lineNumber = currentLine;
     }
 
     //--------------------------------------------------------------------------
@@ -64,13 +71,16 @@ public final class TwigLinterErrorAnnotation extends Annotation {
     /**
      * Get annotations list.
      * @param dataObject current dataObject.
-     * @return List<Annotation> annotations list.
+     * @return List<TwigLinterErrorAnnotation> annotations list.
      */
-    public static List<Annotation> getAnnotationList(
+    public static List<TwigLinterErrorAnnotation> getAnnotationList(
         final DataObject dataObject
     ) {
         if (null == annotations.get(dataObject)) {
-            annotations.put(dataObject, new ArrayList<Annotation>());
+            annotations.put(
+                dataObject,
+                new ArrayList<TwigLinterErrorAnnotation>()
+            );
         }
         return annotations.get(dataObject);
     }
@@ -100,6 +110,16 @@ public final class TwigLinterErrorAnnotation extends Annotation {
         final TwigLinterErrorAnnotation annotation
     ) {
         getAnnotationList(dataObject).remove(annotation);
+    }
+
+    //--------------------------------------------------------------------------
+
+    /**
+     * Getter for lineNumber property.
+     * @return annotation line number.
+     */
+    public int getLineNumber() {
+        return lineNumber;
     }
 
     //--------------------------------------------------------------------------
@@ -141,7 +161,11 @@ public final class TwigLinterErrorAnnotation extends Annotation {
             .getCurrent(error.getLine() - 1);
         final Line.Part currentPartLine = currentLine.createPart(0, 1);
 
-        final TwigLinterErrorAnnotation annotation = new TwigLinterErrorAnnotation(error.getMessage());
+        final TwigLinterErrorAnnotation annotation;
+        annotation = new TwigLinterErrorAnnotation(
+            error.getMessage(),
+            error.getLine() - 1
+        );
         getAnnotationList(dataObject).add(annotation);
 
         annotation.attach(currentPartLine);

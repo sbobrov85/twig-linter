@@ -23,9 +23,11 @@ import java.util.List;
 import org.netbeans.spi.tasklist.FileTaskScanner;
 import org.netbeans.spi.tasklist.Task;
 import org.openide.filesystems.FileObject;
-import ru.sbobrov85.nb.twiglinter.classes.TwigLinter;
+import org.openide.loaders.DataObject;
+import org.openide.loaders.DataObjectNotFoundException;
+import org.openide.util.Exceptions;
 import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
-import ru.sbobrov85.nb.twiglinter.classes.TwigError;
+import ru.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
 
 /**
  * Main class for file scan control.
@@ -82,15 +84,27 @@ public class TwigLinterTaskScanner extends FileTaskScanner {
 
         final LinkedList<Task> tasks = new LinkedList<>();
 
-        LinkedList<TwigError> errors = TwigLinter.lint(fo);
+        List<TwigLinterErrorAnnotation> annotations = null;
+        try {
+            annotations = TwigLinterErrorAnnotation
+                .getAnnotationList(DataObject.find(fo));
+        } catch (DataObjectNotFoundException ex) {
+            Exceptions.printStackTrace(ex);
+        }
 
-        for (TwigError error : errors) {
-            tasks.add(Task.create(
-                fo,
-                GROUP_NAME,
-                error.getMessage(),
-                error.getLine()
-            ));
+        if (annotations != null) {
+            for (TwigLinterErrorAnnotation annotation: annotations) {
+                boolean isTwigAnnotaion = "twiglinter-annotation"
+                    .equals(annotation.getAnnotationType());
+                if (isTwigAnnotaion) {
+                    tasks.add(Task.create(
+                        fo,
+                        GROUP_NAME,
+                        annotation.getShortDescription(),
+                        annotation.getLineNumber() + 1
+                    ));
+                }
+            }
         }
 
         return tasks;
