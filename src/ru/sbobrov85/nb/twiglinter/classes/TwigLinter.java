@@ -81,7 +81,7 @@ public final class TwigLinter {
 
         Runtime runtime = Runtime.getRuntime();
         String[] commands = {
-            "/usr/bin/php", //todo read from php module
+            "php", //todo read from php module
             linter,
             "lint",
             "--format=csv",
