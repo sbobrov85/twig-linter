@@ -79,9 +79,13 @@ public final class TwigLinter {
         Preferences prefs = NbPreferences.forModule(TwigLinter.class);
         String linter = prefs.get(CommonHelper.OPTION_EXECUTABLE_PATH, "");
 
+        String phpInterpreter = NbPreferences.root()
+            .node("org/netbeans/modules/php/project/general")
+            .get("phpInterpreter", "php");
+
         Runtime runtime = Runtime.getRuntime();
         String[] commands = {
-            "php", //todo read from php module
+            phpInterpreter,
             linter,
             "lint",
             "--format=csv",
