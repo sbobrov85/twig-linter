@@ -4,11 +4,6 @@
 
 Integrate php twig-linter with NetBeans IDE
 
-## Introduction
-
-Known problems:
-  * PHP executable hardcoded.
-
 ## Install from *.nbm
 
 1. Download latest release from [releases page](https://github.com/sbobrov85/twig-linter/releases).
