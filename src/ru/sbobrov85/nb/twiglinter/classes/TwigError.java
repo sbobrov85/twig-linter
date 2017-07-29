@@ -39,6 +39,11 @@ public class TwigError {
      */
     private String message = "";
 
+    /**
+     * Contains valid line parts count.
+     */
+    protected static final int LINE_PARTS_COUNT = 3;
+
     //--------------------------------------------------------------------------
 
     /**
@@ -47,7 +52,7 @@ public class TwigError {
      */
     public TwigError(final String csvLine) {
         List<String> parts = Arrays.asList(csvLine.split("\\s*,\\b"));
-        if (parts.size() == 3) {
+        if (parts.size() == LINE_PARTS_COUNT) {
             file = parts.get(0);
             line = Integer.parseInt(parts.get(1));
             message = parts.get(2);

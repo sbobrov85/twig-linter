@@ -52,7 +52,6 @@ public final class CommonHelper {
             NbBundle.getMessage(TwigLinter.class, key);
         } catch (MissingResourceException ex) {
             localizedMessage = key;
-            //todo write log warning
         }
 
         return localizedMessage;
