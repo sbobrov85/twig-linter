@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package ru.sbobrov85.nb.twiglinter;
+package io.github.sbobrov85.nb.twiglinter;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -26,8 +26,8 @@ import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
 import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.util.Exceptions;
-import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
-import ru.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
+import io.github.sbobrov85.nb.twiglinter.classes.CommonHelper;
+import io.github.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
 
 /**
  * Main class for file scan control.

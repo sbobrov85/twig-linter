@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 />
                 <attr
                     name="localizingBundle"
-                    stringvalue="ru.sbobrov85.nb.twiglinter.TwigLinterTaskScanner.Bundle"
+                    stringvalue="io.github.sbobrov85.nb.twiglinter.TwigLinterTaskScanner.Bundle"
                 />
                 <attr
                     name="groupName"
@@ -58,7 +58,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 />
                 <attr
                     name="instanceCreate"
-                    methodvalue="ru.sbobrov85.nb.twiglinter.TwigLinterTaskScanner.create"
+                    methodvalue="io.github.sbobrov85.nb.twiglinter.TwigLinterTaskScanner.create"
                 />
             </file>
         </folder>

@@ -1,4 +1,4 @@
-package ru.sbobrov85.nb.twiglinter;
+package io.github.sbobrov85.nb.twiglinter;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -10,8 +10,8 @@ import org.openide.loaders.DataObject;
 import org.openide.windows.OnShowing;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
-import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
-import ru.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
+import io.github.sbobrov85.nb.twiglinter.classes.CommonHelper;
+import io.github.sbobrov85.nb.twiglinter.classes.TwigLinterErrorAnnotation;
 
 /**
  * Add listeners on open and save file.

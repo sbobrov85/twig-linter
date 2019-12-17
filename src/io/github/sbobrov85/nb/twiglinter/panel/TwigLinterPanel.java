@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package ru.sbobrov85.nb.twiglinter.panel;
+package io.github.sbobrov85.nb.twiglinter.panel;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -26,8 +26,8 @@ import java.util.prefs.Preferences;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.openide.util.NbPreferences;
-import ru.sbobrov85.nb.twiglinter.classes.CommonHelper;
-import ru.sbobrov85.nb.twiglinter.classes.TwigLinter;
+import io.github.sbobrov85.nb.twiglinter.classes.CommonHelper;
+import io.github.sbobrov85.nb.twiglinter.classes.TwigLinter;
 
 final class TwigLinterPanel extends javax.swing.JPanel {
 
