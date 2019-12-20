@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 sbobrov85 <sbobrov85@gmail.com>.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.sbobrov85</groupId>
+    <artifactId>nb.twiglinter</artifactId>
+    <version>1.1.0</version>
+    <packaging>pom</packaging>
+    <name>Twig Linter</name>
+    <url>https://github.com/sbobrov85/twig-linter</url>
+    <description>Integrate php twig linter (https://github.com/asm89/twig-lint) with NetBeans IDE.</description>
+    <developers>
+        <developer>
+            <id>sbobrov85</id>
+            <name>Sergey Bobrov</name>
+            <email>sbobrov85@gmail.com</email>
+            <url>https://github.com/sbobrov85</url>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/sbobrov85/twig-linter.git</connection>
+        <developerConnection>scm:git:https://github.com/sbobrov85/twig-linter.git</developerConnection>
+        <url>https://github.com/sbobrov85/twig-linter/tree/${project.scm.tag}</url>
+        <tag>nb.twiglinter-1.1.0</tag>
+    </scm>
+    <licenses>
+        <license>
+            <name>GNU GPL 2.0</name>
+            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.6</version>
+                <goals>
+                    <goal>deploy-file</goal>
+                </goals>
+                <configuration>
+                    <repositoryId>nexus-staging</repositoryId>
+                    <packaging>nbm</packaging>
+                    <pomFile>pom.xml</pomFile>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                    <artifactId>${project.artifactId}</artifactId>
+                    <groupId>${project.groupId}</groupId>
+                    <version>${project.version}</version>
+                    <file>io-github-sbobrov85-nb-twiglinter.nbm</file>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.7</version>
+            <extensions>true</extensions>
+            <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+        </plugin>
+        </plugins>
+    </build>
+</project>
