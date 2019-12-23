@@ -3,5 +3,5 @@ AutoUpdate-Show-In-Client: true
 OpenIDE-Module: io.github.sbobrov85.nb.twiglinter
 OpenIDE-Module-Layer: io/github/sbobrov85/nb/twiglinter/layer.xml
 OpenIDE-Module-Localizing-Bundle: io/github/sbobrov85/nb/twiglinter/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.1.0
+OpenIDE-Module-Specification-Version: 1.1.1
 
