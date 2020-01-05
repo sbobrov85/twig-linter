@@ -4,6 +4,8 @@
 
 Integrate php twig-linter with NetBeans IDE
 
+![plugin screen](screen.jpg "Plugin screen")
+
 ## Install from *.nbm
 
 1. Download latest release from [releases page](https://github.com/sbobrov85/twig-linter/releases).
