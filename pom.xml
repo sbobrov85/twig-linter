@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <connection>scm:git:https://github.com/sbobrov85/twig-linter.git</connection>
         <developerConnection>scm:git:git@github.com:sbobrov85/twig-linter.git</developerConnection>
         <url>https://github.com/sbobrov85/twig-linter/tree/${project.scm.tag}</url>
-        <tag>nb.twiglinter-1.1.2</tag>
+        <tag>1.1.2</tag>
     </scm>
     <licenses>
         <license>
